@@ -1,8 +1,8 @@
-import FetchDataEffect from "./Components/FetchDataEffect.jsx";
+import UserContext from "./Components/UserContext.jsx";
 const App = () => {
   return (
     <div className="app-container">
-      <FetchDataEffect />
+      <UserContext />
     </div>
   );
 };
