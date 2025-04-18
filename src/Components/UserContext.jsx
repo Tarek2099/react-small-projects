@@ -1,15 +1,17 @@
 import React from "react";
-// import { MyContext } from "../Context/MyContext.jsx";
+import { MyContext } from "../Context/MyContext.jsx";
 import UserProfile from "./UserProfile.jsx";
 
-export const Data = React.createContext();
 const UserContext = () => {
-  const personName = "John Doe";
+  const [personName, setPersonName] = React.useState("John Doe");
+  const [personAge, setPersonAge] = React.useState(25);
   return (
     <div>
-      <Data.Provider value={personName}>
+      <MyContext.Provider
+        value={{ personName, setPersonAge, personAge, setPersonName }}
+      >
         <UserProfile />
-      </Data.Provider>
+      </MyContext.Provider>
     </div>
   );
 };
