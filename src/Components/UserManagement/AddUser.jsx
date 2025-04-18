@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useContextHook } from "../Hooks/useContextHook";
 
-const AddUser = ({ getNewUser }) => {
+const AddUser = () => {
+  const { setUsers } = useContextHook();
   const [newUserName, setNewUserName] = useState("");
   const [email, setEmail] = useState("");
   const nameInputHandler = (e) => {
@@ -18,7 +20,7 @@ const AddUser = ({ getNewUser }) => {
       name: newUserName,
       email: email,
     };
-    getNewUser(newUser);
+    setUsers((previousUsers) => [...previousUsers, newUser]);
     setNewUserName("");
     setEmail("");
   };

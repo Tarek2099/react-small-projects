@@ -1,6 +1,8 @@
 import React from "react";
+import { useContextHook } from "../Hooks/useContextHook";
 
-const User = ({ user, deleteHandler }) => {
+const User = ({ user }) => {
+  const { users, setUsers } = useContextHook();
   const { id, name, email } = user;
   const styling = {
     display: "grid",
@@ -12,8 +14,8 @@ const User = ({ user, deleteHandler }) => {
     borderRadius: "10px",
   };
   const getIDHandler = (id) => {
-    // Function to delete the user
-    deleteHandler(id);
+    const newUsers = users.filter((user) => user.id !== id);
+    setUsers(newUsers);
   };
   return (
     <div style={styling}>

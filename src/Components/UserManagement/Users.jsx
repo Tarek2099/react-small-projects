@@ -1,11 +1,13 @@
 import React from "react";
+import { useContextHook } from "../Hooks/useContextHook";
 import User from "./User";
 
-const Users = ({ users, deleteHandler }) => {
+const Users = () => {
+  const { users } = useContextHook();
   return (
     <>
       {users.map((user) => (
-        <User key={user.id} user={user} deleteHandler={deleteHandler} />
+        <User key={user.id} user={user} />
       ))}
     </>
   );
