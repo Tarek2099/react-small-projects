@@ -1,14 +1,16 @@
 import React from "react";
 import { useContextHook } from "../Hooks/useContextHook";
+import Modal from "./Modal";
 import User from "./User";
 
 const Users = () => {
-  const { users } = useContextHook();
+  const { state } = useContextHook();
   return (
     <>
-      {users.map((user) => (
+      {state.users.map((user) => (
         <User key={user.id} user={user} />
       ))}
+      {state.isModalOpen && <Modal />}
     </>
   );
 };

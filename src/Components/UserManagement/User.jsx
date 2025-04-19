@@ -2,7 +2,7 @@ import React from "react";
 import { useContextHook } from "../Hooks/useContextHook";
 
 const User = ({ user }) => {
-  const { users, setUsers } = useContextHook();
+  const { state, dispatch } = useContextHook();
   const { id, name, email } = user;
   const styling = {
     display: "grid",
@@ -14,8 +14,8 @@ const User = ({ user }) => {
     borderRadius: "10px",
   };
   const getIDHandler = (id) => {
-    const newUsers = users.filter((user) => user.id !== id);
-    setUsers(newUsers);
+    dispatch({ type: "DELETE_USER", payload: id });
+    dispatch({ type: "OPEN_MODAL", payload: `User with ID ${id} deleted` });
   };
   return (
     <div style={styling}>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useContextHook } from "../Hooks/useContextHook";
 
 const AddUser = () => {
-  const { setUsers } = useContextHook();
+  const { state, dispatch } = useContextHook();
   const [newUserName, setNewUserName] = useState("");
   const [email, setEmail] = useState("");
   const nameInputHandler = (e) => {
@@ -20,7 +20,8 @@ const AddUser = () => {
       name: newUserName,
       email: email,
     };
-    setUsers((previousUsers) => [...previousUsers, newUser]);
+    dispatch({ type: "ADD_USER", payload: newUser });
+    dispatch({ type: "OPEN_MODAL", payload: `User ${newUserName} added` });
     setNewUserName("");
     setEmail("");
   };
