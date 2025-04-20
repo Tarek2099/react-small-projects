@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useContextHook } from "../Hooks/useContextHook";
 
 const AddUser = () => {
-  const { state, dispatch } = useContextHook();
+  const { dispatch } = useContextHook();
   const [newUserName, setNewUserName] = useState("");
   const [email, setEmail] = useState("");
   const nameInputHandler = (e) => {
